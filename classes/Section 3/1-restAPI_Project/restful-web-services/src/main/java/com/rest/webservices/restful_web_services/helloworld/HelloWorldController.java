@@ -1,5 +1,9 @@
 package com.rest.webservices.restful_web_services.helloworld;
 
+import java.util.Locale;
+
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,10 +11,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
-// !! Section 3 - Ep. 17 !!
+// !! Section 3 !!
 //Controller to be used to manage the main class' methods (REST API)
 @RestController //annotation to enable REST methods to be used and values to be converted to web-based ones (Beans)
 public class HelloWorldController {
+	
+	private MessageSource messageSource;	// Spring class for Internationalisation of the messages
+	
+	// constructor for the message class, since it was instantiated
+	public HelloWorldController(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
+	
 	//for '/hello-world' path request
 	// \-> return 'Hello World' string (GET request)
 	@RequestMapping(method = RequestMethod.GET, path = "/hello-world")	//linking|mapping the HTTP method to our function, as well as the respective path
@@ -35,6 +47,19 @@ public class HelloWorldController {
 	public HelloWorldBean helloWorldPathVariables(@PathVariable String name) { //mapping the value used on the URL to a variable
 		return new HelloWorldBean(
 				String.format("Hello world to you, %s", name)
+		);
+	}
+	
+	// \-> testing-out i18n with 'MessageSource'
+	@GetMapping(path="/hello-world-internationalized")
+	public String helloWorldI18n() {
+		Locale locale = LocaleContextHolder.getLocale();	// getting the request's current idiom to be used as default (otherwise system's)
+		
+		return messageSource.getMessage(
+				"good.morning.message",
+				null,
+				"It's a default message", 
+				locale
 		);
 	}
 }
