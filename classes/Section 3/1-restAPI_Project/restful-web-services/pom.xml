@@ -94,6 +94,20 @@
 		</dependency>
 		<!-- !! / !! -->
 		
+		<!-- !! Added dependencies for Actuator (monitoring) !! -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- !! / !! -->
+		
+		<!-- !! Added dependencies for HAL Explorer !! -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-hal-explorer</artifactId>
+		</dependency>
+		<!-- !! / !! -->
+		
 	</dependencies>
 
 	<build>

@@ -22,6 +22,11 @@
     \-> based on HAL (JSON Hypertext Application Language)
         ^-> defines how a format to hyperlink across the API's resources
             +-!> PS: 'Spring HATEOAS' also generates HAL responses
+        ^-> HAL Explorer
+            +-> an API explorer for REST
+                )-> API integration for non-technical personel
+                    ]-> needs to be set as a dependency ==> spring-data-rest-hal-explorer
+
     \-> {
         "name": "Adam",
         "birthDate": "2022-08-06",

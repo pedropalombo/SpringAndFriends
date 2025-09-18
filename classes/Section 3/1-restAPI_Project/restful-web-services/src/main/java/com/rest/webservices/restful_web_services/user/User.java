@@ -4,11 +4,23 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 // 'User' class that'll be a Bean, so Spring can manage it
+@Entity(name="user_details")	// injecting the class with 'H2' db methods, and enveloping it as a table
 public class User {
+	
+	// empty constructor so H2 has a base to start manipulating to/from
+	protected User() {
+		
+	}
+	
+	@Id	// setting the field as a PK (h2)
+	@GeneratedValue	// making it auto-generated
 	private Integer id;
 	
 	// -- Setting validation methods for user creation --

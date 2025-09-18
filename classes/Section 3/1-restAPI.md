@@ -35,6 +35,8 @@
 
 > H2 Database
     \-> light (2mb) in-memory database to be used before SQL dbs
+        ^-!> OBS: needs to be configured on 'application.properties' and be given an sql file to go with it
+        ^-> URL: http://localhost:8080/h2-console/
 
 > DevTools
     \-> for LiveReload and application restarts
