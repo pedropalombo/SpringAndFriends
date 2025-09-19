@@ -1,6 +1,6 @@
 package com.microservices.currency_exchange_service;
 
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class CurrencyExchangeController {
 	
 	@Autowired		// forcing the injection of the methods for 'Environment' to be done by Spring
+	private CurrencyExchangeRepository repository;
+	
+	@Autowired		// forcing the injection of the methods for 'Environment' to be done by Spring
 	private Environment environment;
 	
 	@GetMapping(path="/currency-exchange/from/{from_country}/to/{to_country}")
@@ -21,7 +24,14 @@ public class CurrencyExchangeController {
 	) {
 		
 		// 2nd iteration: (manually) setting the return value for the request
-		CurrencyExchange currencyExchange = new CurrencyExchange(1000L, from_country, to_country, BigDecimal.valueOf(50));
+		//CurrencyExchange currencyExchange = new CurrencyExchange(1000L, from_country, to_country, BigDecimal.valueOf(50));
+		
+		// 3rd iteration: using H2's repository to retrieve info from
+		CurrencyExchange currencyExchange = repository.findByFromCountryAndToCountry(from_country, to_country);
+		
+		if(currencyExchange == null) {
+			throw new RuntimeException(String.format("Unable to fetch data for &s and &s", from_country, to_country));
+		}
 		
 		String port = environment.getProperty("local.server.port");		// fetching the port said instance of the microservice is running on
 		

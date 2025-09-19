@@ -2,23 +2,33 @@ package com.microservices.currency_exchange_service;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 // class to talk to return the currencies that'll be used on the exchange
 // PS: its structure is in Section-4/2-CurrencyMicroservice.md
+@Entity(name = "currency_exchange")		// injecting the class with database methods, and creating a "table" with its given name & structure
 public class CurrencyExchange {
 	
+	@Id		// setting this as the PK for the 'CurrencyExchange' table
 	private Long id;
-	private String fromCountry,toCountry;
+	
+	@Column(name="currency_from")	// changing the name of the column
+	private String fromCountry;
+	
+	@Column(name="currency_to")		// changing the name of the column
+	private String toCountry;
+	
 	private BigDecimal conversionMultiple;
 	
 	private String environment;		// so we can apply 'Load Balancing' logic to the given instances of 'CurrencyExchange'
-	
 	
 	// empty constructor so Spring can structure it as a Bean component
 	public CurrencyExchange() {
 		
 	}
 
-	
 	// -- Auto generated constructor, getters/setters, and toString() --	
 	public CurrencyExchange(Long id, String fromCountry, String toCountry,
 			BigDecimal conversionMultiple) {
