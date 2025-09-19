@@ -13,7 +13,7 @@
                     }
         ^-> Conversion
             +-> converts one currency to another
-                )-> e.g: localhost:8000/currency-conversion/from/USD/to/INR/quantity/10
+                )-> e.g: localhost:8100/currency-conversion/from/USD/to/INR/quantity/10
                     ]-> {
                         "id":10001,
                         "from":"USD"

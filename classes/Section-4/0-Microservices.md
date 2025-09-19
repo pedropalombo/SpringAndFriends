@@ -66,3 +66,9 @@
 
 ## Centralized Configuration ##
 > using Spring Cloud Config Server to funel/link the configs for the many microservices into one GIT repository
+
+## Load Balancer - Multiple Instances for the Same Microservice ##
+> go to 'Run Configurations' and set the instances there
+    \-> 'Duplicate' and change the name there
+        ^-> you can change the port the instance would be running on the "Arguments/VM arguments" section
+            +-> -Dserver.port=<port>
