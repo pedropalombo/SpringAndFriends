@@ -63,3 +63,6 @@
 > Kubernetes
     \-> helps to orchestrate microservices with advanced features
         ^-> Service Discovery, Load Balancing, Release Mgmt, ...
+
+## Centralized Configuration ##
+> using Spring Cloud Config Server to funel/link the configs for the many microservices into one GIT repository
