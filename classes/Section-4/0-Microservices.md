@@ -68,8 +68,10 @@
 > using Spring Cloud Config Server to funel/link the configs for the many microservices into one GIT repository
 
 ## Load Balancer - Multiple Instances for the Same Microservice ##
-> sends requests based on the amount of instances for each microservices
+> sends requests based on the amount of instances for each microservices ('Eureka')
     \-> hand-in-hand with 'Naming Server' logic
+        ^-> 'Eureka' does both!
+            +-!> PS: same mentioned on the 'Naming Server' section, but it's a dependency that needs to be added to the respective microservices
 
 > go to 'Run Configurations' and set the instances there
     \-> 'Duplicate' and change the name there
