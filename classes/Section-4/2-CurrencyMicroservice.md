@@ -32,3 +32,5 @@
 > ... or use 'Feign'
     \-!> PS: needs to be added as a dependency first
     \-> for that, a Proxy is needed
+
+> if nothing is working: ))) KILL ALL PROCESSES and run them again (((
