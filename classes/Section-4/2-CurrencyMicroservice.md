@@ -25,4 +25,10 @@
                     }
 
 ## Linking One Microservice to the Other ##
-//
+> send a request to it!
+    \-!> PS: look at 'CurrencyConversionController' for examples
+    \-!> OBS: make sure both microservices are running!
+
+> ... or use 'Feign'
+    \-!> PS: needs to be added as a dependency first
+    \-> for that, a Proxy is needed
