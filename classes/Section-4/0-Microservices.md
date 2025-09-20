@@ -68,7 +68,32 @@
 > using Spring Cloud Config Server to funel/link the configs for the many microservices into one GIT repository
 
 ## Load Balancer - Multiple Instances for the Same Microservice ##
+> sends requests based on the amount of instances for each microservices
+    \-> hand-in-hand with 'Naming Server' logic
+
 > go to 'Run Configurations' and set the instances there
     \-> 'Duplicate' and change the name there
         ^-> you can change the port the instance would be running on the "Arguments/VM arguments" section
             +-> -Dserver.port=<port>
+
+## Naming Server ##
+)) application can be found at 'Naming-Server' project ))
+
+> also known as a "Service Registry"
+    \-> hand-in-hand with 'Load Balancer's logic
+    \-!> PS: it's a service, not logic, so needs to be created
+    \-!> OBS: it's also a dependency for the other microservices, so should be added as well
+
+> what's needed:
+    \-> Spring Boot DevTools
+        ^-> fastReloads and whatnot
+    \-> Spring Boot Actuator
+        ^-> for monitor/managing the application
+    \-> Eureka Server
+        ^-> registry for the active instances of the app's microservices
+
+> flow:
+    \-> 1: microservice_A asks the 'Load Balancer' where should the request go to
+    \-> 2: 'Load Balancer' requests said info to 'Naming Service'
+    \-> 3: 'Naming Server' returns with the desired port (instance) for the wanted microservice_B
+    \-> 4: 'Load Balancer' then directly shoot a request for the right instance of microservice_B, as requested by microservice_A 
