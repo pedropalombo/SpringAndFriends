@@ -70,8 +70,7 @@
 ## Load Balancer - Multiple Instances for the Same Microservice ##
 > sends requests based on the amount of instances for each microservices ('Eureka')
     \-> hand-in-hand with 'Naming Server' logic
-        ^-> 'Eureka' does both!
-            +-!> PS: same mentioned on the 'Naming Server' section, but it's a dependency that needs to be added to the respective microservices
+        ^-!> PS: load balancing is done by the [API Gateway](/classes/Section-5/2-ApiGateway.md)
 
 > go to 'Run Configurations' and set the instances there
     \-> 'Duplicate' and change the name there
@@ -93,9 +92,10 @@
         ^-> for monitor/managing the application
     \-> Eureka Server
         ^-> registry for the active instances of the app's microservices
+            +-!> OBS: can be accessed in localhost:<port>/eureka
 
 > flow:
     \-> 1: microservice_A asks the 'Load Balancer' where should the request go to
-    \-> 2: 'Load Balancer' requests said info to 'Naming Service'
+    \-> 2: 'Load Balancer' ('API Gateway') requests said info to 'Naming Service' ('Eureka')
     \-> 3: 'Naming Server' returns with the desired port (instance) for the wanted microservice_B
     \-> 4: 'Load Balancer' then directly shoot a request for the right instance of microservice_B, as requested by microservice_A 
