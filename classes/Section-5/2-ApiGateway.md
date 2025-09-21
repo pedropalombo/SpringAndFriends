@@ -22,3 +22,7 @@
 > reroute the requests based on url, and redirects them somewhere else
     \-!> OBS: it's basically a configuration file
     \-!> PS: needs to disable the auto-routing from Spring Cloud's (ApiGateway) 'application.properties'
+
+## Logging Filters ##
+> show or hide certain info from the logs
+    ^-> Loggers
